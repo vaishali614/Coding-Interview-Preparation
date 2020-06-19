@@ -1,5 +1,5 @@
 /** Pow(x, n) **/
-/* T : O(log n) & S : O(1) */
+/* T : O(log n) */
 
 #include <bits/stdc++.h>
 #define ll long long
