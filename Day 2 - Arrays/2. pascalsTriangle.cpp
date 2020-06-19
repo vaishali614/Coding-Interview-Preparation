@@ -1,4 +1,5 @@
 /** Pascal Triangle - Dynamic Programming **/
+/* T : O(n^2) & S : O(n^2) */
 
 #include <bits/stdc++.h>
 #define ll long long
