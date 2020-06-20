@@ -1,4 +1,5 @@
 /** 6. Add two numbers as Linked List **/
+/* T : O(max(n1, n2)) & S : O(max(n1, n2)) */
 
 #include <bits/stdc++.h>
 #define ll long long
