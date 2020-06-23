@@ -1,4 +1,5 @@
 /** Next Greater Element 2 **/
+/* T : O(n) & S : O(n) */
 
 #include <bits/stdc++.h>
 #define ll long long
