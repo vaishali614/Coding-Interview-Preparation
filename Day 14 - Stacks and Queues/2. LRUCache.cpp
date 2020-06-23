@@ -5,7 +5,6 @@
 #define ll long long
 #define pb push_back
 #define mod 1e9 + 7
-#define MAX 100000
 using namespace std;
 
 class LRUCache {
