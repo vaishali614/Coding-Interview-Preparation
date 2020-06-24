@@ -7,7 +7,7 @@
 #define MAX 100000
 using namespace std; 
 
-map<ll, vector<ll>> m;
+map<ll, pair<ll, ll>> m;
 
 class TreeNode{
     public:
@@ -19,14 +19,21 @@ class TreeNode{
     }
 };
 
-void bottomView(TreeNode* root, ll hDist){
+void bottomView(TreeNode* root, ll height, ll hDist){
     if(root == NULL)
         return;
 
-    m[hDist].pb(root->data);
+    if(m.find(hDist) == m.end()){
+        m[hDist] = {root->data, height};
+    } else {
+        pair<ll, ll> p = m[hDist];
+        if(height >= p.second){
+            m[hDist] = {root->data, height};
+        }
+    }
 
-    bottomView(root->left, hDist - 1);
-    bottomView(root->right, hDist + 1);
+    bottomView(root->left, height + 1, hDist - 1);
+    bottomView(root->right, height + 1, hDist + 1);
 }
 
 int main() {
@@ -43,11 +50,11 @@ int main() {
     root->left->right->left = new TreeNode(10);
     root->left->right->right = new TreeNode(14);
 
-    bottomView(root, 0);
+    bottomView(root, 0, 0);
 
     for(auto val : m){
-        vector<ll> v = val.second;
-        cout << v.back() << " ";
+        pair<ll, ll> p = val.second;
+        cout << p.first << " ";
     }
     cout << "\n";
 
