@@ -29,7 +29,7 @@ void helper(ll a[], ll start, ll end){
 }
 
 void quickSort(ll a[], ll n) {
-	  ll start = 0, end = n - 1;
+    ll start = 0, end = n - 1;
     helper(a, start, end);
 }
 
