@@ -1,4 +1,4 @@
-/** Topological Sort **/
+/** Topological Sort with Cycle Detection **/
 
 #include <bits/stdc++.h>
 #define ll long long
