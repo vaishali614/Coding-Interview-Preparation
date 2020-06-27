@@ -28,20 +28,16 @@ int main() {
         cin >> a[i];
     }
 
-    int maxEnd = 0, sum = a[0], s = 0, start, end;
-    for(int i = 0;i < n; i++){
-        maxEnd += a[i];
-        if(maxEnd > sum){
-            sum = maxEnd;
-            start = s;
-            end = i;
-        }
-        if(maxEnd < 0){
-            maxEnd = 0;
-            s = i + 1;
-        }
+    ll meh = 0, msf = INT_MIN;
+    for(ll i = 0; i < n; i++){
+        meh += a[i];
+        if(meh < a[i]) 
+            meh = a[i];
+        if(meh > msf)
+            msf = meh;
     }
-    cout << sum << "\n";
+
+    cout << msf << "\n";
 
     return 0;
 }
