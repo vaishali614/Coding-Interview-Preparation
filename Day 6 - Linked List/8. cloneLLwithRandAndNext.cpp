@@ -11,8 +11,8 @@ Node* addDup(Node* head){
 		temp->next = dup;
 		dup->next = nxt;
 		temp = temp->next->next;
-  }
-  return head;
+	}
+	return head;
 }
 
 Node* seperateDup(Node* head){
@@ -20,9 +20,9 @@ Node* seperateDup(Node* head){
 	while(temp && temp->next){
 		temp->next = temp->next->next;
 		if(temp->next)
-		dupTail->next = temp->next->next;
-	else
-		dupTail->next = NULL;
+			dupTail->next = temp->next->next;
+		else
+			dupTail->next = NULL;
 		temp = temp->next;
 		dupTail = dupTail->next;
 	}
@@ -33,14 +33,14 @@ Node* random(Node* head){
 	if(head == NULL)
 		return NULL;
 	head = addDup(head);
-  Node* temp = head;
-  while(temp && temp->next){
-    if(temp->rand)
-    temp->next->rand = temp->rand->next;
-  else 
-    temp->next->rand = NULL;
-    temp = temp->next->next;
-  } 
-  Node* dup = seperateDup(head);
-  return dup; // (the copy of list will be at every second next ptr)
+	Node* temp = head;
+	while(temp && temp->next){
+		if(temp->rand)
+			temp->next->rand = temp->rand->next;
+		else 
+			temp->next->rand = NULL;
+		temp = temp->next->next;
+	} 
+	Node* dup = seperateDup(head);
+	return dup; // (the copy of list will be at every second next ptr)
 }
