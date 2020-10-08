@@ -1,6 +1,9 @@
+#include <algorithm>
+#include <vector>
+using namespace std;
 
-// By force brute
-// Generate all the possible subsets of an array and return true if we find a subset with the required sum
+// Dynamic Programming
+// iterative approach and store the result of subproblems in bottom-up 
 
 class Solution {
 public:
@@ -15,17 +18,18 @@ public:
             return false;
         int subSetSum = totalSum / 2;
         int n = nums.size();
-        return dfs(nums, n - 1, subSetSum);
-    }
-
-    bool dfs(vector<int> &nums, int n, int subSetSum) {
-        // Base Cases
-        if (subSetSum == 0)
-            return true;
-        if (n == 0 || subSetSum < 0)
-            return false;
-        bool result = dfs(nums, n - 1, subSetSum - nums[n - 1]) || dfs(nums, n - 1, subSetSum);
-        
-        return result;
+        bool dp[n + 1][subSetSum + 1];
+        memset(dp, 0, (n + 1) * (subSetSum + 1) * sizeof(bool));
+        dp[0][0] = true;
+        for (int i = 1; i <= n; i++) {
+            int curr = nums[i - 1];
+            for (int j = 0; j <= subSetSum; j++) {
+                if (j < curr)
+                    dp[i][j] = dp[i - 1][j];
+                else
+                    dp[i][j] = dp[i - 1][j] || (dp[i - 1][j - curr]);
+            }
+        }
+        return dp[n][subSetSum];
     }
 };
