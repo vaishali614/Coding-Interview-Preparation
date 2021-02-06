@@ -1,4 +1,4 @@
-/** 3. Repeat and Missing Number **/
+/** 3. Missing Number **/
 /* 
  1) sort and compare with each index - T : O(nlogn) & S : O(1)
  2) use hashset to track occurrence of each element - T : O(n) & S : O(n) 
