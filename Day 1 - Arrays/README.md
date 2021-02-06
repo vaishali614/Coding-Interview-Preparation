@@ -8,4 +8,5 @@
 6. [Merge Overlapping Subintervals](https://leetcode.com/problems/merge-intervals/)
 7. [H-Index I](https://leetcode.com/problems/h-index/)
 8. [H-Index II](https://leetcode.com/problems/h-index-ii/)
+9. [Repeat and Missing Number](https://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/)
  
