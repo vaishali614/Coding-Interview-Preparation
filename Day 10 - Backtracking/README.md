@@ -1,4 +1,4 @@
-# Day 9 - Backtracking
+# Day 10 - Backtracking
 
 1. [N Queens Problem](https://leetcode.com/problems/n-queens/)
 2. [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)
