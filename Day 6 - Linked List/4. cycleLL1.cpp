@@ -1,4 +1,8 @@
 /** 4. Linked List Cycle **/
+/*
+1. Using Hashmap: Insert the complete node in the hashmap while traversing the LL. If any of the nodes, is already present in the hashmap, then it contains a cycle. // T: O(N), S: O(N)
+2. Using Slow and Fast pointers: Move slow one step ahead and move fast two steps ahead. If there's a cycle, slow and fast pointers will collide at some point. // T: O(N), S: O(1)
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
@@ -17,17 +21,16 @@ class Node{
 };
 
 bool hasCycle(Node *head) {
-    if(head == NULL) return false;
-    Node* slow = head, *fast = head->next;
-    while(slow && fast){
+    if(head == NULL || head->next == NULL) 
+        return false;
+    
+    Node* slow = head, *fast = head;
+    while(fast->next && fast->next->next){
+        slow = slow->next;
+        fast = fast->next->next;
         if(fast == slow){
             return true;
         }
-        slow = slow->next;
-        if(fast->next)
-            fast = fast->next->next;
-        else
-            fast = fast->next;
     }
     return false;
 }
