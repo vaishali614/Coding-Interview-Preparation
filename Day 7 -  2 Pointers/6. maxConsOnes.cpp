@@ -1,4 +1,8 @@
 /** 6. Max consecutive ones **/
+/*
+This problem won't be the actual problem asked in an interview, it'll be either a warm-up question or a follow-up question.
+1. Simply iterate over the array and keep counting all 1's whenever you find one 1. Whenever you find a 0, update max and reset sum = 0. // T: O(N), S: O(1)
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
