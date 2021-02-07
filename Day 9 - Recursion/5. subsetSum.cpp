@@ -1,35 +1,38 @@
-#include <algorithm>
-#include <vector>
-using namespace std;
-
-// Dynamic Programming
-// iterative approach and store the result of subproblems in bottom-up 
+/** Partition equal subset sum **/
+/*
+Similar to knapsack problem. If the array contains a subset with sum = (arrSum / 2), then it's possible, otherwise not. Also, if the total sum is odd, it's never possible.
+*/
 
 class Solution {
 public:
-    bool canPartition(vector<int> &nums) {
-        int totalSum = 0;
-        // find sum of all array elements
-        for (int num : nums) {
-            totalSum += num;
-        }
-        // if totalSum is odd,it cannot be partitioned into equal sum subset
-        if (totalSum % 2 != 0) 
-            return false;
-        int subSetSum = totalSum / 2;
+    bool check(vector<int>& nums, int sum){
         int n = nums.size();
-        bool dp[n + 1][subSetSum + 1];
-        memset(dp, 0, (n + 1) * (subSetSum + 1) * sizeof(bool));
-        dp[0][0] = true;
-        for (int i = 1; i <= n; i++) {
-            int curr = nums[i - 1];
-            for (int j = 0; j <= subSetSum; j++) {
-                if (j < curr)
-                    dp[i][j] = dp[i - 1][j];
-                else
-                    dp[i][j] = dp[i - 1][j] || (dp[i - 1][j - curr]);
+        bool dp[sum + 1];
+        
+        dp[0] = true;
+        
+        for(int i = 1; i <= sum; i++)
+            dp[i] = false;
+        
+        for(int i = 0 ; i < n; i++){
+            for(int j = sum; j >= nums[i]; j--){
+                if(dp[j - nums[i]])
+                    dp[j] = true;
             }
         }
-        return dp[n][subSetSum];
+        
+        return dp[sum];
+    }
+    
+    bool canPartition(vector<int>& nums) {
+        int sum = 0;
+        for(int val : nums){
+            sum += val;
+        }
+        
+        if(sum & 1)
+            return false;
+        
+        return check(nums, sum / 2);
     }
 };
