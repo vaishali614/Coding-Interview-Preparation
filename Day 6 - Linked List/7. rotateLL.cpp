@@ -1,4 +1,8 @@
 /** 6. Rotate Linked List **/
+/*
+1. Remove last node and insert in the beginning k times. // T: O(K * N), S: O(1)
+2. If (k >= len), then k = k % len. Convert the LL to a circular LL, then move len - k nodes ahead and add NULL to the last node. // T: O(N) + O(N - (N % k)) ~ O(N), S: O(1) 
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
@@ -17,13 +21,17 @@ class Node{
 };
 
 Node* rotateRight(Node* head, ll k) {
-    if(!head || !head->next) return head;
-    ll len = 0;
+    if(!head || !head->next) 
+        return head;
+    
+    ll len = 1;
     Node* temp = head;
-    while(temp){
+    while(temp->next){
         temp = temp->next;
         len++;
     }
+    
+    temp->next = head; // converting to cicrcular LL to avoid the commented part below (line 48 to line 53)
     
     k %= len;
     if (!k)
@@ -36,12 +44,13 @@ Node* rotateRight(Node* head, ll k) {
     }
     
     Node* newHead = temp->next;
-    Node* tail = newHead;
     temp->next = NULL;
-    while(tail && tail->next){
-        tail = tail->next;
-    }
-    if(tail) tail->next = head;
+//     Node* tail = newHead;
+//     temp->next = NULL;
+//     while(tail && tail->next){
+//         tail = tail->next;
+//     }
+//     if(tail) tail->next = head;
     return newHead;
 }
 
