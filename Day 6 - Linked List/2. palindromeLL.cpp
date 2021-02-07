@@ -1,4 +1,8 @@
 /** 2. Palindrome Linked List **/
+/*
+1. Convert the LL to an array and then check if the array is a palindrome or not. // T: O(N), S: O(N)
+2. Find the mid of LL and reverse the right half. Compare the first half and right half. If they're same, the LL is a palindrome. // T: O(N / 2)(find mid) + O(N / 2)(reverse) + O(N / 2)(compare), S: O(1)
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
