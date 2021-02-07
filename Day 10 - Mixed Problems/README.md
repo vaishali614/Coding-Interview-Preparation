@@ -1,4 +1,4 @@
-# Day 10 - Backtracking
+# Day 9 - Recursion
 
 1. [Combination Sum](https://leetcode.com/problems/combination-sum/)
 2. [Palindrome Partitioning I](https://leetcode.com/problems/palindrome-partitioning/)
