@@ -1,4 +1,10 @@
 /** 1. Intersection of two Linked Lists **/
+/*
+1. Brute Force: Compare every node of both the LL // T: O(N * M), S: O(1)
+2. Use hashmap to store reference of nodes in one LL, then traverse the second LL and search if the same reference is present in the hashmap or not. // T: O(N + M), S: O(N)
+3. Find lengths of both LL. Then find the diff of their lengths. Move the longer LL diff steps ahead. Now, both the LLs need to cover same no. of steps to reach the common node. // T: O(M) + O(M - N) + O(N) = O(2 * M), S: O(1)
+4. [BEST] - Traverse both LLs simultaneously. If anyone of them reaches NULL, take it to the start of other LL. At one point both of them will collide because the LL that'll reach NULL first, the other LL will have the extra part to be travelled. //O(2 * M), S: O(1)
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
@@ -40,8 +46,11 @@ void printLL(Node* head){
 }
 
 Node* getIntersectionNode(Node* headA, Node* headB) {
+    if(headA == NULL || headB == NULL)
+        return NULL;
+    
     Node* a = headA, *b = headB;
-    while((a && !b) || (!a && b) || (a->data != b->data)){
+    while(a != b){
         a = (a) ? a->next : headB;
         b = (b) ? b->next : headA;
     }
