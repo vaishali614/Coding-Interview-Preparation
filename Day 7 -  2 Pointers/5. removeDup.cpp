@@ -1,4 +1,8 @@
 /** 5. Remove duplicates from sorted array **/
+/*
+1. Use sets // T: O(N), S: O(N)
+2. 2 Pointers // T: O(N), S: O(1) 
+*/
 
 #include <bits/stdc++.h>
 #define ll long long
